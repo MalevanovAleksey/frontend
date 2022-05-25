@@ -3,17 +3,15 @@ import './App.css';
 import React from 'react'
 import { useState, useEffect } from 'react';
 
-
-
-
 function App() {
   const [data, setData] = useState(null)
 
-useEffect(() =>{
-  fetch("/hello")
-  .then((response) =>response.json())
-  .then(response => setData(response.message))
-})
+  useEffect(() =>{
+    fetch("/hello")
+    .then((response) =>response.json())
+    .then(response => setData(response.message))
+  },[])
+
 
 
   return (
@@ -21,11 +19,10 @@ useEffect(() =>{
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-      {
-        !data ? 'иди нахуй' : data[0].idUser
-      }
+          
+          {!data ?  'loading' : data[0].UserName}
         </p>
-       
+       {/* <button onClick={cnkt}>Салам</button> */}
       </header>
     </div>
   );
